@@ -39,13 +39,12 @@
     .dev-banner {
       background: #1c1816;
       color: var(--taupe);
-      font-size: 0.82rem;
-      padding: 0.7rem 1rem;
+      font-size: 0.8rem;
+      padding: 0.65rem 1rem;
       text-align: center;
       line-height: 1.45;
     }
     .dev-banner strong { color: #fff; }
-    .dev-banner code { color: #fff; font-size: 0.78rem; }
 
     .nav {
       background: var(--white);
@@ -63,46 +62,18 @@
     .nav-links a { text-decoration: none; color: var(--ink); }
     @media (max-width: 720px) { .nav-links { display: none; } }
 
-    /* 1 Hero */
-    .hero {
-      min-height: min(72vh, 640px);
-      display: grid;
-      align-items: end;
-      color: var(--white);
-      background:
-        linear-gradient(180deg, rgba(28,24,22,.2) 0%, rgba(28,24,22,.78) 100%),
-        url("https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-1.jpg") center/cover no-repeat;
-    }
-    .hero-inner { padding: 3.5rem 0 2.75rem; max-width: 36rem; }
-    .brand {
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 1.15rem;
-      margin: 0 0 0.65rem;
-      opacity: 0.92;
-    }
-    .hero h1 {
-      font-family: "Libre Baskerville", Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(2rem, 5vw, 3.1rem);
-      line-height: 1.12;
-      margin: 0 0 0.85rem;
-    }
-    .hero .sub {
-      margin: 0 0 1.35rem;
-      font-size: 1.08rem;
-      color: rgba(255,255,255,.92);
-    }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.85rem 1.2rem;
+      padding: 0.75rem 1.1rem;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       border: 1px solid transparent;
       cursor: pointer;
       font-family: inherit;
+      white-space: nowrap;
     }
     .btn-primary { background: var(--brown); color: var(--white); }
     .btn-primary:hover { background: var(--brown-deep); }
@@ -113,81 +84,125 @@
     }
     .btn-row { display: flex; flex-wrap: wrap; gap: 0.65rem; }
 
-    /* 1b Form */
-    .lead-form {
-      background: var(--white);
-      border-bottom: 1px solid var(--line);
-      padding: 1.75rem 0 1.9rem;
-      margin-top: -1.5rem;
-      position: relative;
-      z-index: 2;
+    /* Hero + overlapping form */
+    .hero-wrap { position: relative; padding-bottom: 3.5rem; }
+    .hero {
+      min-height: min(62vh, 560px);
+      display: grid;
+      align-items: end;
+      color: var(--white);
+      background:
+        linear-gradient(180deg, rgba(28,24,22,.18) 0%, rgba(28,24,22,.82) 100%),
+        url("https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-1.jpg") center/cover no-repeat;
     }
-    .lead-form .panel {
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: 1.35rem 1.25rem 1.45rem;
-      box-shadow: 0 12px 40px rgba(28,24,22,.08);
+    .hero-inner { padding: 3.25rem 0 5.5rem; max-width: 34rem; }
+    .brand {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1.1rem;
+      margin: 0 0 0.55rem;
+      opacity: 0.92;
     }
-    .lead-form h2 {
+    .hero h1 {
       font-family: "Libre Baskerville", Georgia, serif;
       font-weight: 400;
-      font-size: 1.35rem;
-      margin: 0 0 0.35rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.12;
+      margin: 0 0 0.75rem;
     }
-    .lead-form .hint {
-      margin: 0 0 1rem;
-      color: var(--muted);
-      font-size: 0.95rem;
+    .hero .sub {
+      margin: 0 0 1.25rem;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.92);
     }
-    .form-grid {
+
+    .lead-overlap {
+      position: relative;
+      z-index: 3;
+      margin-top: -4.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .lead-bar {
+      background: rgba(255,255,255,.97);
+      border: 1px solid var(--line);
+      padding: 0.85rem 1rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
+      grid-template-columns: 1fr auto;
+      gap: 0.85rem 1.25rem;
+      align-items: center;
+      box-shadow: 0 10px 36px rgba(28,24,22,.1);
     }
-    @media (max-width: 640px) {
-      .form-grid { grid-template-columns: 1fr; }
-      .lead-form { margin-top: 0; }
+    .lead-bar form {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1fr 1.4fr auto;
+      gap: 0.5rem;
+      align-items: end;
+      width: 100%;
     }
-    .form-grid .full { grid-column: 1 / -1; }
-    label {
+    .lead-bar label {
       display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
     }
-    input, textarea, select {
+    .lead-bar input {
       width: 100%;
-      padding: 0.7rem 0.75rem;
+      padding: 0.55rem 0.6rem;
       border: 1px solid var(--line);
       background: var(--paper);
       font: inherit;
+      font-size: 0.92rem;
       color: var(--ink);
     }
-    input:focus, textarea:focus, select:focus {
-      outline: 2px solid var(--taupe);
+    .lead-bar input:focus {
+      outline: 1px solid var(--brown);
       border-color: var(--brown);
     }
-    .form-actions {
+    .lead-bar .btn { padding: 0.58rem 0.95rem; height: 2.45rem; }
+    .google-proof {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      gap: 0.85rem;
-      margin-top: 0.85rem;
+      gap: 0.55rem;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 0.15rem 0.25rem;
+      border-left: 1px solid var(--line);
+      padding-left: 1rem;
+      white-space: nowrap;
     }
-    .form-note { font-size: 0.85rem; color: var(--muted); }
+    .google-proof svg { flex-shrink: 0; }
+    .google-proof .stars { color: #e2a03f; letter-spacing: 0.05em; font-size: 0.9rem; }
+    .google-proof .meta { font-size: 0.78rem; color: var(--muted); line-height: 1.25; }
+    .google-proof .meta strong { display: block; color: var(--ink); font-size: 0.88rem; }
+    @media (max-width: 980px) {
+      .lead-bar {
+        grid-template-columns: 1fr;
+      }
+      .lead-bar form {
+        grid-template-columns: 1fr 1fr;
+      }
+      .lead-bar form .btn-slot { grid-column: 1 / -1; }
+      .google-proof {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--line);
+        padding-top: 0.75rem;
+        justify-content: flex-start;
+      }
+      .hero-inner { padding-bottom: 4rem; }
+      .lead-overlap { margin-top: -2.5rem; }
+    }
+    @media (max-width: 560px) {
+      .lead-bar form { grid-template-columns: 1fr; }
+    }
 
-    /* Sections */
-    section { padding: 3.75rem 0; }
+    section { padding: 3.5rem 0; }
     section.alt { background: var(--paper-2); }
-    section.dark {
-      background: var(--ink);
-      color: var(--white);
-    }
+    section.dark { background: var(--ink); color: var(--white); }
     .eyebrow {
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.45rem;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.14em;
@@ -198,93 +213,137 @@
     h2 {
       font-family: "Libre Baskerville", Georgia, serif;
       font-weight: 400;
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-size: clamp(1.45rem, 2.4vw, 1.95rem);
       line-height: 1.25;
-      margin: 0 0 0.75rem;
+      margin: 0 0 0.7rem;
     }
     .lede {
-      max-width: 38rem;
+      max-width: 36rem;
       color: var(--muted);
-      margin: 0 0 1.75rem;
+      margin: 0 0 1.6rem;
     }
     .dark .lede { color: var(--taupe); }
+    .block-label {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--taupe);
+      padding: 0.18rem 0.4rem;
+      margin-bottom: 0.7rem;
+    }
+    .dark .block-label { background: var(--brown); color: #fff; }
+    .placeholder-tag {
+      display: inline-block;
+      background: #f3e6c8;
+      color: #6a5420;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.1rem 0.35rem;
+      margin-left: 0.2rem;
+    }
+
+    /* Maatwerk proof */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 720px) { .proof-grid { grid-template-columns: 1fr; } }
+    .proof-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+    }
+    .proof-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .proof-card .shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 25%, rgba(28,24,22,.88) 100%);
+    }
+    .proof-card .txt {
+      position: relative;
+      z-index: 1;
+      padding: 1.1rem 1rem;
+    }
+    .proof-card h3 {
+      margin: 0 0 0.25rem;
+      font-size: 1.05rem;
+    }
+    .proof-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,.88);
+    }
 
     /* Showroom */
     .split {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 2rem;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+      align-items: center;
     }
     @media (max-width: 800px) { .split { grid-template-columns: 1fr; } }
-    .photo-stack {
+    .photo-pair {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.65rem;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 0.55rem;
     }
-    .photo-stack img {
+    .photo-pair img {
       width: 100%;
-      aspect-ratio: 4/5;
+      height: 100%;
       object-fit: cover;
+      aspect-ratio: 4/5;
     }
-    .photo-stack img:first-child {
-      aspect-ratio: 4/3;
-      grid-column: 1 / -1;
-    }
-    .checklist {
-      list-style: none;
-      padding: 0;
-      margin: 1.25rem 0 1.5rem;
-    }
-    .checklist li {
-      padding: 0.55rem 0 0.55rem 1.4rem;
-      position: relative;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-    .checklist li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--brown);
-      font-weight: 700;
-    }
-    .meta-box {
-      margin-top: 1.25rem;
-      padding: 1rem 1.1rem;
-      background: var(--white);
-      border-left: 3px solid var(--brown);
+    .photo-pair img:first-child { aspect-ratio: 4/3; }
+    .meta-line {
+      margin-top: 1.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
       font-size: 0.95rem;
       color: var(--muted);
     }
-    .meta-box strong { color: var(--ink); }
+    .meta-line strong { color: var(--ink); }
 
-    /* Process */
+    /* Process visual */
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      counter-reset: step;
+      gap: 0.75rem;
     }
     @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
     .step {
       background: var(--white);
-      padding: 1.2rem 1.1rem 1.3rem;
-      border-top: 3px solid var(--brown);
+      overflow: hidden;
+      border: 1px solid var(--line);
     }
-    .step::before {
-      counter-increment: step;
-      content: "0" counter(step);
+    .step img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .step .body { padding: 0.95rem 0.95rem 1.1rem; }
+    .step .num {
       font-family: "Libre Baskerville", Georgia, serif;
       color: var(--taupe);
-      font-size: 1.25rem;
-      display: block;
-      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      margin: 0 0 0.25rem;
     }
-    .step h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
-    .step p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+    .step h3 { margin: 0 0 0.35rem; font-size: 1.02rem; }
+    .step p { margin: 0; color: var(--muted); font-size: 0.9rem; }
 
     /* Team */
     .team {
@@ -293,14 +352,10 @@
       gap: 1rem;
     }
     @media (max-width: 800px) { .team { grid-template-columns: 1fr; } }
-    .person {
-      background: var(--white);
-      border: 1px solid var(--line);
-    }
+    .person { background: var(--white); border: 1px solid var(--line); }
     .person .ph {
       aspect-ratio: 1;
-      background:
-        linear-gradient(135deg, var(--paper-2), var(--taupe));
+      background: linear-gradient(135deg, var(--paper-2), var(--taupe));
       display: grid;
       place-items: center;
       color: var(--brown-deep);
@@ -309,73 +364,100 @@
       text-align: center;
       padding: 1rem;
     }
-    .person .ph img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .person .body { padding: 1rem 1.05rem 1.2rem; }
+    .person .body { padding: 1rem 1.05rem 1.15rem; }
     .person .role {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--brown);
       font-weight: 700;
-      margin: 0 0 0.25rem;
+      margin: 0 0 0.2rem;
     }
-    .person h3 { margin: 0 0 0.4rem; font-size: 1.08rem; }
-    .person p { margin: 0; color: var(--muted); font-size: 0.93rem; }
-    .placeholder-tag {
-      display: inline-block;
-      background: #f3e6c8;
-      color: #6a5420;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.12rem 0.4rem;
-      margin-left: 0.25rem;
-    }
-
-    /* Offerings */
-    .offers {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.85rem;
-    }
-    @media (max-width: 640px) { .offers { grid-template-columns: 1fr; } }
-    .offer {
-      background: var(--white);
-      padding: 1.25rem 1.2rem;
-      border: 1px solid var(--line);
-    }
-    .offer h3 { margin: 0 0 0.4rem; font-size: 1.08rem; }
-    .offer p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .person h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+    .person p { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
     /* Reviews */
     .reviews {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: 0.85rem;
     }
     @media (max-width: 800px) { .reviews { grid-template-columns: 1fr; } }
     .review {
       background: var(--white);
-      padding: 1.25rem 1.15rem;
+      padding: 1.15rem 1.1rem;
       border-top: 3px solid var(--taupe);
     }
-    .stars { color: var(--brown); letter-spacing: 0.08em; margin: 0 0 0.65rem; font-size: 0.9rem; }
-    .review p { margin: 0 0 0.85rem; font-size: 0.98rem; }
-    .review cite {
-      font-style: normal;
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-weight: 600;
+    .stars { color: #e2a03f; margin: 0 0 0.55rem; letter-spacing: 0.06em; }
+    .review p { margin: 0 0 0.75rem; font-size: 0.96rem; }
+    .review cite { font-style: normal; font-size: 0.84rem; color: var(--muted); font-weight: 600; }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
     }
+    @media (max-width: 800px) { .projects { grid-template-columns: 1fr; } }
+    .project {
+      text-decoration: none;
+      color: inherit;
+      background: var(--white);
+      display: block;
+    }
+    .project img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .project figcaption { padding: 0.85rem 0.95rem 1rem; }
+    .project .place {
+      margin: 0 0 0.2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brown);
+      font-weight: 700;
+    }
+    .project h3 { margin: 0 0 0.25rem; font-size: 1.02rem; }
+    .project p { margin: 0; color: var(--muted); font-size: 0.88rem; }
+
+    /* Offerings visual */
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    @media (max-width: 700px) { .offers { grid-template-columns: 1fr; } }
+    .offer {
+      position: relative;
+      min-height: 210px;
+      overflow: hidden;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+    }
+    .offer img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .offer .shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(28,24,22,.9) 100%);
+    }
+    .offer .txt { position: relative; z-index: 1; padding: 1.15rem 1.05rem; }
+    .offer h3 { margin: 0 0 0.3rem; font-size: 1.1rem; }
+    .offer p { margin: 0; font-size: 0.9rem; color: rgba(255,255,255,.88); }
 
     /* Local */
     .local-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 2rem;
+      gap: 1.75rem;
       align-items: center;
     }
     @media (max-width: 800px) { .local-grid { grid-template-columns: 1fr; } }
@@ -388,7 +470,7 @@
     /* FAQ */
     .faq details {
       border-bottom: 1px solid var(--line);
-      padding: 0.95rem 0;
+      padding: 0.9rem 0;
     }
     .faq details:first-of-type { border-top: 1px solid var(--line); }
     .faq summary {
@@ -400,57 +482,37 @@
       gap: 1rem;
     }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; color: var(--brown); font-size: 1.25rem; font-weight: 400; }
+    .faq summary::after { content: "+"; color: var(--brown); font-size: 1.2rem; font-weight: 400; }
     .faq details[open] summary::after { content: "–"; }
     .faq details p {
-      margin: 0.7rem 0 0.15rem;
+      margin: 0.65rem 0 0.1rem;
       color: var(--muted);
       max-width: 40rem;
     }
 
-    /* CTA */
     .cta-grid {
       display: grid;
       grid-template-columns: 1.25fr 0.75fr;
-      gap: 2rem;
+      gap: 1.75rem;
       align-items: end;
     }
     @media (max-width: 800px) { .cta-grid { grid-template-columns: 1fr; } }
     .cta-meta { color: var(--taupe); font-size: 0.95rem; line-height: 1.7; margin: 0 0 1rem; }
-    .cta-meta strong { color: var(--white); }
+    .cta-meta strong { color: #fff; }
 
     footer {
-      padding: 1.5rem 0 2rem;
+      padding: 1.4rem 0 1.8rem;
       text-align: center;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--muted);
-    }
-
-    /* Block labels for website team */
-    .block-label {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: var(--ink);
-      color: var(--taupe);
-      padding: 0.2rem 0.45rem;
-      margin-bottom: 0.75rem;
-    }
-    .dark .block-label {
-      background: var(--brown);
-      color: var(--white);
     }
   </style>
 </head>
 <body>
   <div class="dev-banner">
-    <strong>Voorbeeld voor websiteteam</strong> —
-    template landingspagina <code>/keuken-{locatie}/</code>
-    (hier ingevuld met <strong>Soest</strong>).
-    Gele tags = nog invullen (teamfoto’s, echte reviews, doorlooptijd).
-    Formulier is demo (geen backend).
+    <strong>Voorbeeld websiteteam v2</strong> —
+    horizontale form in hero · maatwerk-blok · visueel proces/aanbod · reviews + projecten.
+    Gele tags = nog invullen.
   </div>
 
   <header class="nav">
@@ -464,351 +526,404 @@
         <a href="https://www.pietdewitkeukens.nl/onze-meubelmakerij/">Meubelmakerij</a>
         <a href="https://www.pietdewitkeukens.nl/showroom/">Showroom</a>
       </nav>
-      <a class="btn btn-primary" href="#formulier" style="padding:0.55rem 0.9rem;font-size:0.88rem;">Afspraak maken</a>
+      <a class="btn btn-primary" href="#formulier" style="padding:0.5rem 0.85rem;font-size:0.86rem;">Afspraak maken</a>
     </div>
   </header>
 
-  <!-- ========== BLOK 1: HERO ========== -->
-  <section class="hero" aria-label="Hero">
-    <div class="wrap hero-inner">
-      <p class="block-label" style="background:rgba(0,0,0,.45);">Blok 1 — Hero</p>
-      <p class="brand">Piet de Wit Keukens</p>
-      <h1>Keuken Soest</h1>
-      <p class="sub">
-        Maatwerk keuken- en interieurspecialist, waar alles in eigen werkplaats wordt gemaakt.
-      </p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="#formulier">Plan een gesprek</a>
-        <a class="btn btn-ghost" href="#showroom">Showroom &amp; werkplaats</a>
+  <!-- 1 HERO + 1b FORM -->
+  <div class="hero-wrap">
+    <section class="hero" aria-label="Hero">
+      <div class="wrap hero-inner">
+        <p class="block-label" style="background:rgba(0,0,0,.4);">Blok 1 — Hero</p>
+        <p class="brand">Piet de Wit Keukens</p>
+        <h1>Keuken Soest</h1>
+        <p class="sub">
+          Maatwerk keuken- en interieurspecialist, waar alles in eigen werkplaats wordt gemaakt.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#formulier">Plan een gesprek</a>
+          <a class="btn btn-ghost" href="#maatwerk">Waarom echt maatwerk</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== BLOK 1b: FORMULIER ========== -->
-  <div class="lead-form" id="formulier">
-    <div class="wrap">
-      <div class="panel">
-        <p class="block-label">Blok 1b — Inzendformulier</p>
-        <h2>Vertel wat u zoekt — wij bellen u terug</h2>
-        <p class="hint">Vrijblijvend. Geen catalogusdruk, wel een echt gesprek over uw keuken.</p>
-        <form action="#" method="post" onsubmit="event.preventDefault(); alert('Demo: koppel dit formulier aan jullie CRM / e-mailflow.');">
-          <div class="form-grid">
-            <div>
-              <label for="naam">Naam</label>
-              <input id="naam" name="naam" type="text" required autocomplete="name" />
-            </div>
-            <div>
-              <label for="tel">Telefoon</label>
-              <input id="tel" name="tel" type="tel" required autocomplete="tel" />
-            </div>
-            <div>
-              <label for="email">E-mail</label>
-              <input id="email" name="email" type="email" autocomplete="email" />
-            </div>
-            <div>
-              <label for="plaats">Woonplaats</label>
-              <input id="plaats" name="plaats" type="text" value="Soest" />
-            </div>
-            <div class="full">
-              <label for="vraag">Waar kunnen we u mee helpen?</label>
-              <textarea id="vraag" name="vraag" rows="3" placeholder="Bijv. nieuwe keuken, renovatie, of eerst een showroombezoek…"></textarea>
-            </div>
+    <div class="wrap lead-overlap" id="formulier">
+      <p class="block-label" style="margin-bottom:0.45rem;">Blok 1b — Formulier + Google</p>
+      <div class="lead-bar">
+        <form action="#" method="post" onsubmit="event.preventDefault(); alert('Demo: koppel aan CRM / mailflow.');">
+          <div>
+            <label for="naam">Naam</label>
+            <input id="naam" name="naam" type="text" required autocomplete="name" />
           </div>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Verstuur — bel mij terug</button>
-            <span class="form-note">Of bel direct: <a href="tel:0306923291">030 – 692 32 91</a></span>
+          <div>
+            <label for="tel">Telefoon</label>
+            <input id="tel" name="tel" type="tel" required autocomplete="tel" />
+          </div>
+          <div>
+            <label for="plaats">Woonplaats</label>
+            <input id="plaats" name="plaats" type="text" value="Soest" />
+          </div>
+          <div>
+            <label for="vraag">Korte vraag</label>
+            <input id="vraag" name="vraag" type="text" placeholder="Nieuwe keuken / renovatie / bezoek…" />
+          </div>
+          <div class="btn-slot">
+            <label>&nbsp;</label>
+            <button class="btn btn-primary" type="submit">Bel mij terug</button>
           </div>
         </form>
+        <a class="google-proof" href="https://www.google.com/maps" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l5.7-5.7C34.2 6.1 29.4 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.5-.4-3.5z"/>
+            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.1 8 3l5.7-5.7C34.2 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+            <path fill="#4CAF50" d="M24 44c5.2 0 10-2 13.6-5.2l-6.3-5.3C29.3 35.4 26.8 36 24 36c-5.2 0-9.6-3.1-11.3-7.5l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.3 4.1-4.2 5.5l.1.1 6.3 5.3C39.2 37.3 44 32 44 24c0-1.3-.1-2.5-.4-3.5z"/>
+          </svg>
+          <div>
+            <div class="stars" aria-label="5 sterren">★★★★★</div>
+            <div class="meta">
+              <strong>4,9 / 5</strong>
+              Google reviews
+              <span class="placeholder-tag">score</span>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- ========== BLOK 2: SHOWROOM ========== -->
-  <section id="showroom">
+  <!-- 2 MAATWERK -->
+  <section id="maatwerk">
     <div class="wrap">
-      <p class="block-label">Blok 2 — Showroom &amp; meubelmakerij</p>
+      <p class="block-label">Blok 2 — Compleet maatwerk</p>
+      <p class="eyebrow">Het verschil</p>
+      <h2>Geen catalogus. Alles uit eigen werkplaats.</h2>
+      <p class="lede">
+        Elke kast, front en blad wordt voor ú gemaakt in Zeist — niet besteld bij een fabriek.
+        Dat is compleet maatwerk: van ontwerp tot laatste schroef in eigen hand.
+      </p>
+      <div class="proof-grid">
+        <article class="proof-card">
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-sfeer-meubelmakerij-2.jpg" alt="Eigen meubelmakerij" />
+          <div class="shade"></div>
+          <div class="txt">
+            <h3>Eigen meubelmakerij</h3>
+            <p>Gezaagd, gefreesd en afgewerkt in Zeist — niet van de plank.</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-header-showroom.jpg" alt="Op maat getekend" />
+          <div class="shade"></div>
+          <div class="txt">
+            <h3>Op maat getekend</h3>
+            <p>Indeling en materialen volgen uw woning, niet een folder.</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-2.jpg" alt="Zelf geplaatst" />
+          <div class="shade"></div>
+          <div class="txt">
+            <h3>Zelf geplaatst</h3>
+            <p>Van werkplaats naar montage bij u thuis — één team.</p>
+          </div>
+        </article>
+      </div>
+      <p style="margin:1.25rem 0 0;">
+        <a href="#showroom">Bekijk hoe dat eruitziet in showroom &amp; werkplaats →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 SHOWROOM -->
+  <section class="alt" id="showroom">
+    <div class="wrap">
+      <p class="block-label">Blok 3 — Showroom &amp; meubelmakerij</p>
       <div class="split">
         <div>
           <p class="eyebrow">Kom kijken</p>
-          <h2>Showroom én meubelmakerij onder één dak</h2>
-          <p class="lede">
-            U komt niet in een keukenhal met folders, maar op een plek waar
-            materialen tastbaar zijn — en waar achter de deur echt gebouwd wordt.
+          <h2>Kom kijken waar uw keuken gemaakt wordt</h2>
+          <p class="lede" style="margin-bottom:1rem;">
+            Geen keukenhal met folders — wel materialen die u kunt voelen,
+            en achter de deur een echte meubelmakerij.
           </p>
-          <p>
-            In de showroom bespreken we uw woning, stijl en wat er wél of niet
-            moet veranderen. In de meubelmakerij ziet u waar uw keuken straks
-            gemaakt wordt: zagen, frezen, afwerken — geen lopende band.
+          <p style="color:var(--muted);">
+            In de showroom praten we over uw woning en wensen. Wilt u zien hoe
+            we bouwen? Dan loopt u zo de werkplaats in.
           </p>
-          <p style="font-weight:600;margin:1.25rem 0 0.4rem;">Handig om mee te nemen</p>
-          <ul class="checklist">
-            <li>Foto’s of plattegrond van de huidige keuken</li>
-            <li>Sfeerbeelden die u aanspreken</li>
-            <li>Globaal idee van budget (mag ook in het gesprek)</li>
-          </ul>
-          <div class="meta-box">
-            <strong>Piet de Wit Keukens</strong><br />
-            Laan van Cattenbroeck 11, 3703 BH Zeist<br />
-            Di–za welkom · bij voorkeur op afspraak<br />
+          <div class="meta-line">
+            <strong>Laan van Cattenbroeck 11, Zeist</strong><br />
+            Di–za · bij voorkeur op afspraak<br />
             <a href="#formulier">Plan een bezoek →</a>
           </div>
         </div>
-        <div class="photo-stack">
-          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-header-showroom.jpg" alt="Showroom Piet de Wit Keukens Zeist" />
-          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-sfeer-meubelmakerij-2.jpg" alt="Meubelmakerij" />
-          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-sfeer-meubelmakerij-3.jpg" alt="Werkplaats detail" />
+        <div class="photo-pair">
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-header-showroom.jpg" alt="Showroom" />
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-sfeer-meubelmakerij-3.jpg" alt="Werkplaats" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== BLOK 3: PROCES ========== -->
-  <section class="alt" id="proces">
+  <!-- 4 PROCES -->
+  <section id="proces">
     <div class="wrap">
-      <p class="block-label">Blok 3 — Het proces</p>
+      <p class="block-label">Blok 4 — Proces (visueel)</p>
       <p class="eyebrow">Zo werken wij</p>
       <h2>Van eerste gesprek tot keuken die past</h2>
-      <p class="lede">
-        U praat met mensen die ontwerpen én maken — niet met een verkoper van een keten.
-      </p>
+      <p class="lede">Vier stappen. Eén team. Geen fabriek ertussen.</p>
       <div class="steps">
         <article class="step">
-          <h3>Kennismaking</h3>
-          <p>
-            In de showroom in Zeist: uw wensen, woning, wat behouden kan en wat nieuw moet.
-            We schetsen eerlijk wat maatwerk inhoudt.
-          </p>
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-header-showroom.jpg" alt="Kennismaking" />
+          <div class="body">
+            <p class="num">01</p>
+            <h3>Kennismaking</h3>
+            <p>Showroom Zeist: wensen, woning, wat behouden kan — eerlijk gesprek over maatwerk.</p>
+          </div>
         </article>
         <article class="step">
-          <h3>Ontwerp</h3>
-          <p>
-            Indeling, materialen, blad, grepen, apparatuur. Pas als het klopt —
-            en u akkoord gaat — gaat de keuken de werkplaats in.
-          </p>
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-sfeer-over-ons-1.jpg" alt="Ontwerp" />
+          <div class="body">
+            <p class="num">02</p>
+            <h3>Ontwerp</h3>
+            <p>Indeling, materialen, blad, apparatuur. Pas bij akkoord gaat de keuken de werkplaats in.</p>
+          </div>
         </article>
         <article class="step">
-          <h3>Bouwen</h3>
-          <p>
-            In onze eigen meubelmakerij in Zeist. Geen fabriekslijn: kasten en
-            details worden voor ú gemaakt. Meekijken mag.
-          </p>
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-sfeer-meubelmakerij-2.jpg" alt="Bouwen" />
+          <div class="body">
+            <p class="num">03</p>
+            <h3>Bouwen</h3>
+            <p>In eigen meubelmakerij. Meekijken mag — hier wordt uw keuken gemaakt.</p>
+          </div>
         </article>
         <article class="step">
-          <h3>Plaatsen</h3>
-          <p>
-            Ons team monteert de keuken bij u thuis in Soest of omgeving,
-            inclusief afwerking en oplevering.
-          </p>
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-japandi-keuken-1.jpg" alt="Plaatsen" />
+          <div class="body">
+            <p class="num">04</p>
+            <h3>Plaatsen</h3>
+            <p>Montage bij u thuis in Soest of omgeving, inclusief afwerking.</p>
+          </div>
         </article>
       </div>
-      <p style="margin:1.35rem 0 0;color:var(--muted);font-size:0.95rem;">
-        Indicatie doorlooptijd na akkoord ontwerp:
-        <span class="placeholder-tag">invullen door klant</span>
+      <p style="margin:1.2rem 0 0;color:var(--muted);font-size:0.92rem;">
+        Doorlooptijd na akkoord ontwerp: <span class="placeholder-tag">invullen</span>
       </p>
     </div>
   </section>
 
-  <!-- ========== BLOK 4: TEAM ========== -->
-  <section id="team">
+  <!-- 5 TEAM -->
+  <section class="alt" id="team">
     <div class="wrap">
-      <p class="block-label">Blok 4 — Het team</p>
+      <p class="block-label">Blok 5 — Team</p>
       <p class="eyebrow">Met wie praat u?</p>
       <h2>Mensen achter het merk</h2>
       <p class="lede">
         Piet de Wit Keukens wordt voortgezet door Wouter Nieuwenhuize —
-        met hetzelfde vakmanschap, in dezelfde werkplaats in Zeist.
+        met hetzelfde vakmanschap, in dezelfde werkplaats.
       </p>
       <div class="team">
         <article class="person">
-          <div class="ph">
-            <!-- Vervang door echte foto -->
-            Portretfoto<br />Wouter
-            <span class="placeholder-tag">foto</span>
-          </div>
+          <div class="ph">Portret Wouter <span class="placeholder-tag">foto</span></div>
           <div class="body">
             <p class="role">Eigenaar</p>
             <h3>Wouter Nieuwenhuize</h3>
-            <p>
-              Neemt het bedrijf voort sinds 2023/2024. Verbindt bouwervaring
-              met de keukenfilosofie van Piet: de keuken als hart van het huis.
-            </p>
+            <p>Voortzetting van het merk. Verbindt bouwervaring met de keukenfilosofie van Piet.</p>
           </div>
         </article>
         <article class="person">
-          <div class="ph">
-            Portretfoto<br />Ontwerp / advies
-            <span class="placeholder-tag">naam + foto</span>
-          </div>
+          <div class="ph">Ontwerp / advies <span class="placeholder-tag">naam + foto</span></div>
           <div class="body">
             <p class="role">Ontwerp &amp; advies</p>
             <h3>Naam invullen</h3>
-            <p>
-              Eerste aanspreekpunt in de showroom: indeling, materialen en
-              wat bij úw woning past.
-            </p>
+            <p>Eerste aanspreekpunt in de showroom: indeling, materialen, wat bij uw woning past.</p>
           </div>
         </article>
         <article class="person">
-          <div class="ph">
-            Portretfoto<br />Werkplaats / montage
-            <span class="placeholder-tag">naam + foto</span>
-          </div>
+          <div class="ph">Werkplaats / montage <span class="placeholder-tag">naam + foto</span></div>
           <div class="body">
             <p class="role">Meubelmakerij &amp; montage</p>
             <h3>Naam invullen</h3>
-            <p>
-              Bouwt en plaatst. Zo blijft kwaliteit van zaagsnede tot oplevering
-              in eigen hand.
-            </p>
+            <p>Bouwt en plaatst — kwaliteit van zaagsnede tot oplevering in eigen hand.</p>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ========== PLUS: REVIEWS ========== -->
-  <section class="alt" id="reviews">
+  <!-- 6 REVIEWS -->
+  <section id="reviews">
     <div class="wrap">
-      <p class="block-label">Plus — Reviews</p>
+      <p class="block-label">Blok 6 — Reviews</p>
       <p class="eyebrow">Wat klanten zeggen</p>
       <h2>Vertrouwen uit de regio</h2>
-      <p class="lede">
-        Vervang onderstaande voorbeelden door echte Google-reviews.
-        <span class="placeholder-tag">echte reviews plakken</span>
-      </p>
+      <p class="lede">Vervang door echte Google-reviews. <span class="placeholder-tag">quotes</span></p>
       <div class="reviews">
         <blockquote class="review">
           <p class="stars">★★★★★</p>
-          <p>“Voorbeeldquote — vervang door echte review over maatwerk / werkplaats / begeleiding.”</p>
+          <p>“Voorbeeldquote — over maatwerk / werkplaats / begeleiding.”</p>
           <cite>— Naam, plaats</cite>
         </blockquote>
         <blockquote class="review">
           <p class="stars">★★★★★</p>
-          <p>“Voorbeeldquote — liefst één review uit Soest of omgeving.”</p>
+          <p>“Voorbeeldquote — liefst uit Soest of omgeving.”</p>
           <cite>— Naam, Soest</cite>
         </blockquote>
         <blockquote class="review">
           <p class="stars">★★★★★</p>
-          <p>“Voorbeeldquote — over showroombezoek of oplevering.”</p>
+          <p>“Voorbeeldquote — showroombezoek of oplevering.”</p>
           <cite>— Naam, Zeist</cite>
         </blockquote>
       </div>
     </div>
   </section>
 
-  <!-- ========== BLOK 5: WAT WE MAKEN ========== -->
+  <!-- 7 PROJECTEN -->
+  <section class="alt" id="projecten">
+    <div class="wrap">
+      <p class="block-label">Blok 7 — Projecten</p>
+      <p class="eyebrow">Uit de werkplaats</p>
+      <h2>Recente keukens</h2>
+      <p class="lede">Bewijs dat de werkplaats levert — idealiter met regio-onderschrift.</p>
+      <div class="projects">
+        <a class="project" href="https://www.pietdewitkeukens.nl/project/messing-eiland/">
+          <figure>
+            <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-2.jpg" alt="Messing eiland" />
+            <figcaption>
+              <p class="place">Regio Zeist</p>
+              <h3>Messing eiland</h3>
+              <p>Warm metaal, maatwerk eiland, strak tot in detail.</p>
+            </figcaption>
+          </figure>
+        </a>
+        <a class="project" href="https://www.pietdewitkeukens.nl/project/japandi/">
+          <figure>
+            <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-japandi-keuken-1.jpg" alt="Japandi" />
+            <figcaption>
+              <p class="place">Uit de meubelmakerij</p>
+              <h3>Japandi</h3>
+              <p>Rustige lijnen — gebouwd op de woning, niet op een folder.</p>
+            </figcaption>
+          </figure>
+        </a>
+        <a class="project" href="https://www.pietdewitkeukens.nl/project/oxford-blue-keuken/">
+          <figure>
+            <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-oxford-blue-1.jpg" alt="Oxford blue" />
+            <figcaption>
+              <p class="place">Uit de meubelmakerij</p>
+              <h3>Oxford blue</h3>
+              <p>Kleur en maatwerkfronten die bij het huis horen.</p>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+      <p style="margin:1.1rem 0 0;"><a href="https://www.pietdewitkeukens.nl/projecten/">Alle projecten →</a></p>
+    </div>
+  </section>
+
+  <!-- 8 AANBOD -->
   <section id="aanbod">
     <div class="wrap">
-      <p class="block-label">Blok 5 — Wat we maken</p>
+      <p class="block-label">Blok 8 — Wat we maken (visueel)</p>
       <p class="eyebrow">Aanbod</p>
       <h2>Meer dan alleen een nieuwe keuken</h2>
-      <p class="lede">Kies wat bij uw situatie past — we denken mee over de hele ruimte.</p>
+      <p class="lede">Kies wat bij uw situatie past.</p>
       <div class="offers">
         <article class="offer">
-          <h3>Keuken volledig op maat</h3>
-          <p>Nieuw ontwerp, gebouwd in eigen werkplaats. Geen standaardkasten uit een catalogus.</p>
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-1.jpg" alt="Keuken op maat" />
+          <div class="shade"></div>
+          <div class="txt">
+            <h3>Keuken volledig op maat</h3>
+            <p>Nieuw ontwerp, gebouwd in eigen werkplaats. Geen standaardkasten.</p>
+          </div>
         </article>
         <article class="offer">
-          <h3>Keukenrenovatie</h3>
-          <p>Fronten, blad, indeling of details aanpakken waar het zin heeft — zonder alles te slopen.</p>
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeister-sfeer-maatwerk-keukens-6.jpg" alt="Renovatie" />
+          <div class="shade"></div>
+          <div class="txt">
+            <h3>Keukenrenovatie</h3>
+            <p>Fronten, blad of indeling aanpakken waar het zin heeft.</p>
+          </div>
         </article>
         <article class="offer">
-          <h3>Aanrechtblad &amp; details</h3>
-          <p>Werkblad, spoelbak, verlichting en afwerking die bij het ontwerp horen.</p>
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-oxford-blue-3.jpg" alt="Aanrechtblad" />
+          <div class="shade"></div>
+          <div class="txt">
+            <h3>Aanrechtblad &amp; details</h3>
+            <p>Werkblad, spoelbak, verlichting — passend bij het ontwerp.</p>
+          </div>
         </article>
         <article class="offer">
-          <h3>Bijpassend interieur</h3>
-          <p>Kastenwand, bijkeuken of woonkamerstuk — zodat alles één geheel wordt.</p>
+          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-japandi-keuken-3.jpg" alt="Interieur" />
+          <div class="shade"></div>
+          <div class="txt">
+            <h3>Bijpassend interieur</h3>
+            <p>Kastenwand, bijkeuken of woonkamerstuk — één geheel.</p>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ========== BLOK 6: LOCATIE ========== -->
+  <!-- 9 LOCATIE -->
   <section class="alt" id="locatie">
     <div class="wrap">
-      <p class="block-label">Blok 6 — Korte {locatie}-blok (wisselt per URL)</p>
+      <p class="block-label">Blok 9 — Locatie (wisselt per URL)</p>
       <div class="local-grid">
         <div>
           <p class="eyebrow">Soest</p>
           <h2>Keukens die bij Soestse woningen passen</h2>
           <p>
             In Soest zien we vaak vrijstaande huizen, jaren-dertigwoningen en
-            ruimtes waar keuken en wonen in elkaar overlopen. Dan telt niet
-            welke keuken “in de mode” is, maar wat past bij routing, licht en
-            hoe u leeft.
+            open woonkeukens. Dan telt wat past bij routing, licht en hoe u leeft —
+            niet wat in de mode is.
           </p>
           <p style="color:var(--muted);margin-bottom:0;">
-            Gesprek en maakwerk gebeuren in Zeist. Montage doen we bij u thuis
-            in Soest en omgeving.
+            Gesprek en maakwerk in Zeist. Montage bij u thuis in Soest en omgeving.
           </p>
         </div>
-        <img
-          src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeister-sfeer-maatwerk-keukens-6.jpg"
-          alt="Maatwerk keuken sfeer"
-        />
+        <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeister-sfeer-maatwerk-keukens-6.jpg" alt="Sfeer maatwerk" />
       </div>
     </div>
   </section>
 
-  <!-- ========== PLUS: FAQ ========== -->
+  <!-- 10 FAQ -->
   <section class="faq" id="faq">
     <div class="wrap">
-      <p class="block-label">Plus — Mini-FAQ</p>
+      <p class="block-label">Blok 10 — FAQ</p>
       <p class="eyebrow">Veelgestelde vragen</p>
       <h2>Antwoorden vóór u langskomt</h2>
       <details open>
         <summary>Wat kost een maatwerk keuken ongeveer?</summary>
-        <p>
-          Dat hangt af van maat, materiaal en apparatuur. Na gesprek en
-          opmeting krijgt u een heldere offerte.
-          <span class="placeholder-tag">optioneel: bandbreedte</span>
-        </p>
+        <p>Hangt af van maat, materiaal en apparatuur. Na gesprek en opmeting een heldere offerte. <span class="placeholder-tag">optioneel bandbreedte</span></p>
       </details>
       <details>
         <summary>Renoveren of helemaal nieuw?</summary>
-        <p>
-          Klopt de indeling, dan kan renovatie al veel doen. Klopt routing of
-          opbergruimte niet, dan is nieuw maatwerk vaak slimmer. Dat kijken we samen.
-        </p>
+        <p>Klopt de indeling, dan kan renovatie al veel doen. Anders is nieuw maatwerk vaak slimmer. Dat kijken we samen.</p>
       </details>
       <details>
         <summary>Hoe lang duurt het traject?</summary>
-        <p>
-          Eerst ontwerp, daarna productie in de meubelmakerij, dan montage.
-          Exacte planning hangt af van complexiteit.
-          <span class="placeholder-tag">doorlooptijd</span>
-        </p>
+        <p>Ontwerp → productie in de meubelmakerij → montage. Exacte planning hangt af van complexiteit. <span class="placeholder-tag">doorlooptijd</span></p>
       </details>
       <details>
         <summary>Kan ik de werkplaats zien?</summary>
-        <p>
-          Ja. Showroom en meubelmakerij zitten op hetzelfde adres in Zeist.
-          Dat is juist wat ons onderscheidt van een keukenhal.
-        </p>
+        <p>Ja. Showroom en meubelmakerij op hetzelfde adres in Zeist.</p>
       </details>
       <details>
         <summary>Werken jullie ook in Soest?</summary>
-        <p>
-          Ja. We plaatsen regelmatig in Soest en omliggende dorpen.
-          Ontwerp en bouw gebeuren in Zeist.
-        </p>
+        <p>Ja. Plaatsen in Soest en omliggende dorpen; ontwerp en bouw in Zeist.</p>
       </details>
     </div>
   </section>
 
-  <!-- ========== BLOK 7: SLOT CTA ========== -->
+  <!-- 11 SLOT -->
   <section class="dark" id="contact">
     <div class="wrap">
-      <p class="block-label">Blok 7 — Slot-CTA</p>
+      <p class="block-label">Blok 11 — Slot-CTA</p>
       <div class="cta-grid">
         <div>
           <p class="eyebrow">Volgende stap</p>
           <h2>Kom langs — of laat u terugbellen</h2>
-          <p class="lede">
-            Vertel wat u zoekt. Wij laten zien hoe een keuken uit eigen
-            werkplaats eruitziet — voor uw huis in Soest.
-          </p>
+          <p class="lede">Vertel wat u zoekt. Wij laten zien hoe een keuken uit eigen werkplaats eruitziet.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="#formulier">Naar het formulier</a>
             <a class="btn btn-ghost" href="tel:0306923291">030 – 692 32 91</a>
@@ -827,8 +942,8 @@
   </section>
 
   <footer>
-    Voorbeeld HTML voor websiteteam · niet live · bloklabels verwijderen bij oplevering<br />
-    Template: hero → formulier → showroom → proces → team → reviews → aanbod → locatie → FAQ → slot
+    Voorbeeld HTML v2 · websiteteam · bloklabels verwijderen bij oplevering<br />
+    Flow: hero → form+Google → maatwerk → showroom → proces → team → reviews → projecten → aanbod → locatie → FAQ → slot
   </footer>
 </body>
 </html>

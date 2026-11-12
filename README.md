@@ -1,44 +1,26 @@
-# Oplevering websiteteam — landingspagina template
+# Oplevering websiteteam — landingspagina template v2
 
 ## Bestand
-**`lp-voorbeeld-websiteteam.html`** — open in browser (dubbelklik). Geen build nodig.
+**`lp-voorbeeld-websiteteam.html`** — open in browser (dubbelklik).
 
-## Doel
-Visueel + inhoudelijk voorbeeld voor `/keuken-{locatie}/` (voorbeeld = Soest).  
-Niet live zetten; `noindex` staat in de head.
+GitHub-preview repo: https://github.com/paulliamwoeler/piet-de-wit-lp-voorbeeld
 
-## Blokvolgorde
+## Blokvolgorde v2
 1. Hero  
-2. Inzendformulier (direct onder hero)  
-3. Showroom & meubelmakerij  
-4. Proces (4 stappen)  
-5. Team  
-6. Reviews (plus)  
-7. Wat we maken  
-8. Korte locatie-tekst  
-9. Mini-FAQ (plus)  
-10. Slot-CTA  
+2. Formulier (horizontaal, overlap banner) + Google-sterren  
+3. Compleet maatwerk (3 visuele bewijskaarten)  
+4. Showroom & meubelmakerij (kort; géén “neem mee”-lijst)  
+5. Proces met foto per stap  
+6. Team  
+7. Reviews  
+8. Projecten  
+9. Wat we maken (beeldkaarten)  
+10. Locatie-tekst  
+11. FAQ  
+12. Slot-CTA  
 
-Grijze **Blok X**-labels zijn alleen voor development — bij bouw verwijderen.
-
-## Wat per plaats wisselt
-- H1: `Keuken {locatie}`
-- Title / meta description
-- Locatie-blok (sectie `#locatie`)
-- FAQ-vraag “Werken jullie ook in …?”
-- Formulierveld woonplaats (default)
-
-Rest is vast (showroom, proces, team, aanbod).
-
-## Nog aan te leveren door klant/agency
-- [ ] Teamfoto’s + echte namen (nu placeholders)
-- [ ] 2–3 echte Google-reviews
-- [ ] Doorlooptijd / eventuele prijsindicatie
-- [ ] Formulier koppelen (CRM / mail / WordPress form)
-
-## Design-referentie
-Kleuren uit bestaande site: papier `#f9f7f4`, bruin `#8a5d55`, taupe `#d4c3af`.  
-Fonts: Karla + Libre Baskerville (of bestaande theme-fonts aanhouden).
-
-## Bronstructuur
-Zie ook `lp-blokindeling.md` voor contentregels.
+## Nog aan te leveren
+- [ ] Teamfoto’s + namen  
+- [ ] Echte Google-score + reviewquotes  
+- [ ] Doorlooptijd  
+- [ ] Formulier-backend  
