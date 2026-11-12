@@ -84,23 +84,22 @@
     }
     .btn-row { display: flex; flex-wrap: wrap; gap: 0.65rem; }
 
-    /* Hero + vertical form rechts */
+    /* Hero + form rechts onderin (desktop); op mobiel onder de banner */
+    .hero-band { position: relative; }
     .hero {
-      min-height: min(78vh, 680px);
+      min-height: min(70vh, 600px);
       color: var(--white);
       background:
         linear-gradient(105deg, rgba(28,24,22,.78) 0%, rgba(28,24,22,.45) 48%, rgba(28,24,22,.55) 100%),
         url("https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-1.jpg") center/cover no-repeat;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr minmax(280px, 320px);
-      gap: 2rem;
-      align-items: end;
+    .hero .wrap {
+      display: flex;
+      align-items: flex-end;
       min-height: inherit;
-      padding: 3rem 0 2.75rem;
+      padding: 3.5rem 0 3.25rem;
     }
-    .hero-copy { max-width: 34rem; padding-bottom: 1.5rem; }
+    .hero-copy { max-width: 34rem; padding-right: 2rem; }
     .brand {
       font-family: "Libre Baskerville", Georgia, serif;
       font-size: 1.1rem;
@@ -120,14 +119,21 @@
       color: rgba(255,255,255,.92);
     }
 
+    .lead-slot {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: -2.75rem auto 0; /* iets onder de hero-rand, niet middenin */
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: flex-end;
+    }
     .lead-panel {
       background: rgba(255,255,255,.97);
       border: 1px solid rgba(226,217,207,.9);
       color: var(--ink);
       padding: 1.15rem 1.05rem 1.2rem;
-      width: 100%;
+      width: min(100%, 320px);
       box-shadow: 0 14px 40px rgba(28,24,22,.18);
-      align-self: center;
     }
     .lead-panel .form-title {
       font-family: "Libre Baskerville", Georgia, serif;
@@ -193,14 +199,30 @@
 
     @media (max-width: 860px) {
       .hero { min-height: auto; }
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 2.5rem 0 2rem;
-        align-items: stretch;
+      .hero .wrap { padding: 2.75rem 0 2.5rem; }
+      .hero-copy { max-width: none; padding-right: 0; }
+      .lead-slot {
+        margin: 0 auto;
+        justify-content: stretch;
+        width: 100%;
+        max-width: none;
       }
-      .hero-copy { padding-bottom: 0; }
-      .lead-panel { max-width: 420px; }
+      .lead-panel {
+        width: 100%;
+        max-width: none;
+        box-shadow: none;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 1.35rem 1.25rem 1.5rem;
+      }
+    }
+
+    #maatwerk { padding-top: 4.5rem; }
+    @media (max-width: 860px) {
+      #maatwerk { padding-top: 2.75rem; }
     }
 
     section { padding: 3.5rem 0; }
@@ -535,22 +557,26 @@
     </div>
   </header>
 
-  <!-- 1 HERO + FORM RECHTS VERTICAAL -->
-  <section class="hero" aria-label="Hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="block-label" style="background:rgba(0,0,0,.4);">Blok 1 — Hero</p>
-        <p class="brand">Piet de Wit Keukens</p>
-        <h1>Keuken Soest</h1>
-        <p class="sub">
-          Maatwerk keuken- en interieurspecialist, waar alles in eigen werkplaats wordt gemaakt.
-        </p>
-        <div class="btn-row">
-          <a class="btn btn-ghost" href="#maatwerk">Waarom echt maatwerk</a>
+  <!-- 1 HERO + FORM RECHTS ONDERIN / MOBIEL ONDER BANNER -->
+  <div class="hero-band">
+    <section class="hero" aria-label="Hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="block-label" style="background:rgba(0,0,0,.4);">Blok 1 — Hero</p>
+          <p class="brand">Piet de Wit Keukens</p>
+          <h1>Keuken Soest</h1>
+          <p class="sub">
+            Maatwerk keuken- en interieurspecialist, waar alles in eigen werkplaats wordt gemaakt.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-ghost" href="#maatwerk">Waarom echt maatwerk</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <aside class="lead-panel" id="formulier" aria-label="Aanvraagformulier">
+    <div class="lead-slot" id="formulier">
+      <aside class="lead-panel" aria-label="Aanvraagformulier">
         <p class="block-label" style="margin-bottom:0.55rem;">Blok 1b — Formulier</p>
         <p class="form-title">Plan een gesprek</p>
         <p class="form-hint">Vrijblijvend. Wij bellen u terug.</p>
@@ -595,7 +621,7 @@
         </a>
       </aside>
     </div>
-  </section>
+  </div>
 
   <!-- 2 MAATWERK -->
   <section id="maatwerk">
