@@ -84,18 +84,23 @@
     }
     .btn-row { display: flex; flex-wrap: wrap; gap: 0.65rem; }
 
-    /* Hero + overlapping form */
-    .hero-wrap { position: relative; padding-bottom: 3.5rem; }
+    /* Hero + vertical form rechts */
     .hero {
-      min-height: min(62vh, 560px);
-      display: grid;
-      align-items: end;
+      min-height: min(78vh, 680px);
       color: var(--white);
       background:
-        linear-gradient(180deg, rgba(28,24,22,.18) 0%, rgba(28,24,22,.82) 100%),
+        linear-gradient(105deg, rgba(28,24,22,.78) 0%, rgba(28,24,22,.45) 48%, rgba(28,24,22,.55) 100%),
         url("https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-1.jpg") center/cover no-repeat;
     }
-    .hero-inner { padding: 3.25rem 0 5.5rem; max-width: 34rem; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(280px, 320px);
+      gap: 2rem;
+      align-items: end;
+      min-height: inherit;
+      padding: 3rem 0 2.75rem;
+    }
+    .hero-copy { max-width: 34rem; padding-bottom: 1.5rem; }
     .brand {
       font-family: "Libre Baskerville", Georgia, serif;
       font-size: 1.1rem;
@@ -115,39 +120,43 @@
       color: rgba(255,255,255,.92);
     }
 
-    .lead-overlap {
-      position: relative;
-      z-index: 3;
-      margin-top: -4.25rem;
-      margin-bottom: 0.5rem;
-    }
-    .lead-bar {
+    .lead-panel {
       background: rgba(255,255,255,.97);
-      border: 1px solid var(--line);
-      padding: 0.85rem 1rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.85rem 1.25rem;
-      align-items: center;
-      box-shadow: 0 10px 36px rgba(28,24,22,.1);
-    }
-    .lead-bar form {
-      display: grid;
-      grid-template-columns: 1.1fr 1.1fr 1fr 1.4fr auto;
-      gap: 0.5rem;
-      align-items: end;
+      border: 1px solid rgba(226,217,207,.9);
+      color: var(--ink);
+      padding: 1.15rem 1.05rem 1.2rem;
       width: 100%;
+      box-shadow: 0 14px 40px rgba(28,24,22,.18);
+      align-self: center;
     }
-    .lead-bar label {
+    .lead-panel .form-title {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin: 0 0 0.25rem;
+      color: var(--ink);
+    }
+    .lead-panel .form-hint {
+      margin: 0 0 0.9rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .lead-panel form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .lead-panel label {
       display: block;
-      font-size: 0.65rem;
+      font-size: 0.64rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.18rem;
     }
-    .lead-bar input {
+    .lead-panel input,
+    .lead-panel textarea {
       width: 100%;
       padding: 0.55rem 0.6rem;
       border: 1px solid var(--line);
@@ -156,46 +165,42 @@
       font-size: 0.92rem;
       color: var(--ink);
     }
-    .lead-bar input:focus {
+    .lead-panel textarea { resize: vertical; min-height: 64px; }
+    .lead-panel input:focus,
+    .lead-panel textarea:focus {
       outline: 1px solid var(--brown);
       border-color: var(--brown);
     }
-    .lead-bar .btn { padding: 0.58rem 0.95rem; height: 2.45rem; }
+    .lead-panel .btn {
+      width: 100%;
+      margin-top: 0.25rem;
+      padding: 0.7rem 1rem;
+    }
     .google-proof {
       display: flex;
       align-items: center;
       gap: 0.55rem;
       text-decoration: none;
       color: var(--ink);
-      padding: 0.15rem 0.25rem;
-      border-left: 1px solid var(--line);
-      padding-left: 1rem;
-      white-space: nowrap;
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
     }
     .google-proof svg { flex-shrink: 0; }
-    .google-proof .stars { color: #e2a03f; letter-spacing: 0.05em; font-size: 0.9rem; }
-    .google-proof .meta { font-size: 0.78rem; color: var(--muted); line-height: 1.25; }
-    .google-proof .meta strong { display: block; color: var(--ink); font-size: 0.88rem; }
-    @media (max-width: 980px) {
-      .lead-bar {
+    .google-proof .stars { color: #e2a03f; letter-spacing: 0.05em; font-size: 0.88rem; }
+    .google-proof .meta { font-size: 0.76rem; color: var(--muted); line-height: 1.25; }
+    .google-proof .meta strong { display: block; color: var(--ink); font-size: 0.86rem; }
+
+    @media (max-width: 860px) {
+      .hero { min-height: auto; }
+      .hero-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2.5rem 0 2rem;
+        align-items: stretch;
       }
-      .lead-bar form {
-        grid-template-columns: 1fr 1fr;
-      }
-      .lead-bar form .btn-slot { grid-column: 1 / -1; }
-      .google-proof {
-        border-left: none;
-        padding-left: 0;
-        border-top: 1px solid var(--line);
-        padding-top: 0.75rem;
-        justify-content: flex-start;
-      }
-      .hero-inner { padding-bottom: 4rem; }
-      .lead-overlap { margin-top: -2.5rem; }
-    }
-    @media (max-width: 560px) {
-      .lead-bar form { grid-template-columns: 1fr; }
+      .hero-copy { padding-bottom: 0; }
+      .lead-panel { max-width: 420px; }
     }
 
     section { padding: 3.5rem 0; }
@@ -530,10 +535,10 @@
     </div>
   </header>
 
-  <!-- 1 HERO + 1b FORM -->
-  <div class="hero-wrap">
-    <section class="hero" aria-label="Hero">
-      <div class="wrap hero-inner">
+  <!-- 1 HERO + FORM RECHTS VERTICAAL -->
+  <section class="hero" aria-label="Hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
         <p class="block-label" style="background:rgba(0,0,0,.4);">Blok 1 — Hero</p>
         <p class="brand">Piet de Wit Keukens</p>
         <h1>Keuken Soest</h1>
@@ -541,15 +546,14 @@
           Maatwerk keuken- en interieurspecialist, waar alles in eigen werkplaats wordt gemaakt.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="#formulier">Plan een gesprek</a>
           <a class="btn btn-ghost" href="#maatwerk">Waarom echt maatwerk</a>
         </div>
       </div>
-    </section>
 
-    <div class="wrap lead-overlap" id="formulier">
-      <p class="block-label" style="margin-bottom:0.45rem;">Blok 1b — Formulier + Google</p>
-      <div class="lead-bar">
+      <aside class="lead-panel" id="formulier" aria-label="Aanvraagformulier">
+        <p class="block-label" style="margin-bottom:0.55rem;">Blok 1b — Formulier</p>
+        <p class="form-title">Plan een gesprek</p>
+        <p class="form-hint">Vrijblijvend. Wij bellen u terug.</p>
         <form action="#" method="post" onsubmit="event.preventDefault(); alert('Demo: koppel aan CRM / mailflow.');">
           <div>
             <label for="naam">Naam</label>
@@ -560,17 +564,18 @@
             <input id="tel" name="tel" type="tel" required autocomplete="tel" />
           </div>
           <div>
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" />
+          </div>
+          <div>
             <label for="plaats">Woonplaats</label>
             <input id="plaats" name="plaats" type="text" value="Soest" />
           </div>
           <div>
             <label for="vraag">Korte vraag</label>
-            <input id="vraag" name="vraag" type="text" placeholder="Nieuwe keuken / renovatie / bezoek…" />
+            <textarea id="vraag" name="vraag" rows="2" placeholder="Nieuwe keuken, renovatie of showroombezoek…"></textarea>
           </div>
-          <div class="btn-slot">
-            <label>&nbsp;</label>
-            <button class="btn btn-primary" type="submit">Bel mij terug</button>
-          </div>
+          <button class="btn btn-primary" type="submit">Bel mij terug</button>
         </form>
         <a class="google-proof" href="https://www.google.com/maps" target="_blank" rel="noopener">
           <svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true">
@@ -588,9 +593,9 @@
             </div>
           </div>
         </a>
-      </div>
+      </aside>
     </div>
-  </div>
+  </section>
 
   <!-- 2 MAATWERK -->
   <section id="maatwerk">
