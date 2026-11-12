@@ -21,6 +21,7 @@
       --brown-deep: #6f4a44;
       --white: #fff;
       --max: 1100px;
+      --form-hang: 14.5rem; /* form steekt ±half in Blok 2 */
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -84,23 +85,25 @@
     }
     .btn-row { display: flex; flex-wrap: wrap; gap: 0.65rem; }
 
-    /* Hero + form: één compositie, rechts onderin — hoogte = content, geen stretch */
+    /* Hero + form: half in banner, half in Blok 2; tekst links naast hang */
     .hero {
       color: var(--white);
+      overflow: visible;
       background:
         linear-gradient(115deg, rgba(28,24,22,.82) 0%, rgba(28,24,22,.42) 55%, rgba(28,24,22,.62) 100%),
         url("https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-1.jpg") center/cover no-repeat;
     }
     .hero-grid {
+      --form-col: minmax(320px, 360px);
       display: grid;
-      grid-template-columns: 1fr minmax(280px, 320px);
-      gap: 1.5rem;
-      align-items: end;
-      padding: 2.5rem 0 2rem;
+      grid-template-columns: 1fr var(--form-col);
+      gap: 1.75rem;
+      align-items: start;
+      padding: 2.75rem 0 0;
     }
     .hero-copy {
-      max-width: 32rem;
-      padding: 0.5rem 0 0;
+      max-width: 34rem;
+      padding: 0.35rem 0 2rem;
     }
     .brand {
       font-family: "Libre Baskerville", Georgia, serif;
@@ -125,50 +128,52 @@
       background: rgba(255,255,255,.97);
       border: 1px solid rgba(226,217,207,.85);
       color: var(--ink);
-      padding: 0.9rem 0.95rem 0.95rem;
+      padding: 1.05rem 1.05rem 1.1rem;
       width: 100%;
-      box-shadow: 0 10px 28px rgba(28,24,22,.14);
+      box-shadow: 0 14px 36px rgba(28,24,22,.18);
       position: relative;
-      z-index: 2;
+      z-index: 3;
+      align-self: end;
+      margin-bottom: calc(var(--form-hang) * -1);
     }
     .lead-panel .form-title {
       font-family: "Libre Baskerville", Georgia, serif;
-      font-size: 1.05rem;
+      font-size: 1.12rem;
       font-weight: 400;
-      margin: 0 0 0.1rem;
+      margin: 0 0 0.12rem;
       color: var(--ink);
     }
     .lead-panel .form-hint {
-      margin: 0 0 0.65rem;
-      font-size: 0.78rem;
+      margin: 0 0 0.75rem;
+      font-size: 0.8rem;
       color: var(--muted);
     }
     .lead-panel form {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.4rem 0.5rem;
+      gap: 0.55rem 0.65rem;
     }
     .lead-panel form .full { grid-column: 1 / -1; }
     .lead-panel label {
       display: block;
-      font-size: 0.6rem;
+      font-size: 0.62rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.15rem;
     }
     .lead-panel input,
     .lead-panel textarea {
       width: 100%;
-      padding: 0.45rem 0.5rem;
+      padding: 0.55rem 0.6rem;
       border: 1px solid var(--line);
       background: var(--paper);
       font: inherit;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--ink);
     }
-    .lead-panel textarea { resize: vertical; min-height: 48px; }
+    .lead-panel textarea { resize: vertical; min-height: 56px; }
     .lead-panel input:focus,
     .lead-panel textarea:focus {
       outline: 1px solid var(--brown);
@@ -176,23 +181,50 @@
     }
     .lead-panel .btn {
       width: 100%;
-      margin-top: 0.1rem;
-      padding: 0.58rem 0.85rem;
+      margin-top: 0.15rem;
+      padding: 0.68rem 0.9rem;
     }
     .google-proof {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
       text-decoration: none;
       color: var(--ink);
-      margin-top: 0.6rem;
-      padding-top: 0.6rem;
+      margin-top: 0.7rem;
+      padding-top: 0.7rem;
       border-top: 1px solid var(--line);
     }
     .google-proof svg { flex-shrink: 0; width: 18px; height: 18px; }
-    .google-proof .stars { color: #e2a03f; letter-spacing: 0.04em; font-size: 0.78rem; }
-    .google-proof .meta { font-size: 0.68rem; color: var(--muted); line-height: 1.2; }
-    .google-proof .meta strong { display: block; color: var(--ink); font-size: 0.78rem; }
+    .google-proof .stars { color: #e2a03f; letter-spacing: 0.04em; font-size: 0.8rem; }
+    .google-proof .meta { font-size: 0.7rem; color: var(--muted); line-height: 1.2; }
+    .google-proof .meta strong { display: block; color: var(--ink); font-size: 0.8rem; }
+
+    /* Blok 2: intro links van hangend form — geen leeg wit */
+    #maatwerk {
+      padding-top: 1.1rem;
+      padding-bottom: 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .maatwerk-grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(320px, 360px);
+      gap: 1.75rem;
+      align-items: start;
+    }
+    .maatwerk-intro {
+      min-width: 0;
+      padding-top: 0.15rem;
+    }
+    .maatwerk-intro .lede { margin-bottom: 0; }
+    .maatwerk-clear {
+      min-height: var(--form-hang);
+      pointer-events: none;
+    }
+    .maatwerk-proof {
+      grid-column: 1 / -1;
+      margin-top: 1.5rem;
+    }
 
     @media (max-width: 860px) {
       .hero-grid {
@@ -205,6 +237,8 @@
         padding: 0 0 1.5rem;
       }
       .lead-panel {
+        margin-bottom: 0;
+        align-self: stretch;
         width: 100vw;
         max-width: none;
         margin-left: calc(50% - 50vw);
@@ -216,13 +250,18 @@
         border-bottom: 1px solid var(--line);
         padding: 1.15rem 1.15rem 1.25rem;
       }
+      .lead-panel form { gap: 0.5rem 0.55rem; }
+      .maatwerk-grid { grid-template-columns: 1fr; gap: 0; }
+      .maatwerk-clear { display: none; }
+      .maatwerk-proof { margin-top: 1.5rem; }
+      #maatwerk { padding-top: 2.25rem; }
+      :root { --form-hang: 0rem; }
     }
 
     section { padding: 3.5rem 0; }
     section.hero { padding: 0; }
     section.alt { background: var(--paper-2); }
     section.dark { background: var(--ink); color: var(--white); }
-    #maatwerk { padding-top: 2.5rem; }
     .eyebrow {
       margin: 0 0 0.45rem;
       font-size: 0.72rem;
@@ -615,45 +654,50 @@
     </div>
   </section>
 
-  <!-- 2 MAATWERK -->
+  <!-- 2 MAATWERK — intro links naast hangend form -->
   <section id="maatwerk">
-    <div class="wrap">
-      <p class="block-label">Blok 2 — Compleet maatwerk</p>
-      <p class="eyebrow">Het verschil</p>
-      <h2>Geen catalogus. Alles uit eigen werkplaats.</h2>
-      <p class="lede">
-        Elke kast, front en blad wordt voor ú gemaakt in Zeist — niet besteld bij een fabriek.
-        Dat is compleet maatwerk: van ontwerp tot laatste schroef in eigen hand.
-      </p>
-      <div class="proof-grid">
-        <article class="proof-card">
-          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-sfeer-meubelmakerij-2.jpg" alt="Eigen meubelmakerij" />
-          <div class="shade"></div>
-          <div class="txt">
-            <h3>Eigen meubelmakerij</h3>
-            <p>Gezaagd, gefreesd en afgewerkt in Zeist — niet van de plank.</p>
-          </div>
-        </article>
-        <article class="proof-card">
-          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-header-showroom.jpg" alt="Op maat getekend" />
-          <div class="shade"></div>
-          <div class="txt">
-            <h3>Op maat getekend</h3>
-            <p>Indeling en materialen volgen uw woning, niet een folder.</p>
-          </div>
-        </article>
-        <article class="proof-card">
-          <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-2.jpg" alt="Zelf geplaatst" />
-          <div class="shade"></div>
-          <div class="txt">
-            <h3>Zelf geplaatst</h3>
-            <p>Van werkplaats naar montage bij u thuis — één team.</p>
-          </div>
-        </article>
+    <div class="wrap maatwerk-grid">
+      <div class="maatwerk-intro">
+        <p class="block-label">Blok 2 — Compleet maatwerk</p>
+        <p class="eyebrow">Het verschil</p>
+        <h2>Geen catalogus. Alles uit eigen werkplaats.</h2>
+        <p class="lede">
+          Elke kast, front en blad wordt voor ú gemaakt in Zeist — niet besteld bij een fabriek.
+          Dat is compleet maatwerk: van ontwerp tot laatste schroef in eigen hand.
+        </p>
       </div>
-      <p style="margin:1.25rem 0 0;">
-        <a href="#showroom">Bekijk hoe dat eruitziet in showroom &amp; werkplaats →</a>
-      </p>
+      <div class="maatwerk-clear" aria-hidden="true"></div>
+      <div class="maatwerk-proof">
+        <div class="proof-grid">
+          <article class="proof-card">
+            <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-sfeer-meubelmakerij-2.jpg" alt="Eigen meubelmakerij" />
+            <div class="shade"></div>
+            <div class="txt">
+              <h3>Eigen meubelmakerij</h3>
+              <p>Gezaagd, gefreesd en afgewerkt in Zeist — niet van de plank.</p>
+            </div>
+          </article>
+          <article class="proof-card">
+            <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-zeist-header-showroom.jpg" alt="Op maat getekend" />
+            <div class="shade"></div>
+            <div class="txt">
+              <h3>Op maat getekend</h3>
+              <p>Indeling en materialen volgen uw woning, niet een folder.</p>
+            </div>
+          </article>
+          <article class="proof-card">
+            <img src="https://d2ftqzf4nsbvwq.cloudfront.net/wp-content/uploads/www.pietdewitkeukens.nl/2024/12/piet-de-wit-keukens-project-messing-eiland-2.jpg" alt="Zelf geplaatst" />
+            <div class="shade"></div>
+            <div class="txt">
+              <h3>Zelf geplaatst</h3>
+              <p>Van werkplaats naar montage bij u thuis — één team.</p>
+            </div>
+          </article>
+        </div>
+        <p style="margin:1.25rem 0 0;">
+          <a href="#showroom">Bekijk hoe dat eruitziet in showroom &amp; werkplaats →</a>
+        </p>
+      </div>
     </div>
   </section>
 
